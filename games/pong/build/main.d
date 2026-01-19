@@ -28,21 +28,37 @@ main.o: C:/Users/sdandy/gba_shum/games/pong/src/main.cpp \
  C:/Users/sdandy/gba_shum/butano/include/bn_string_view.h \
  C:/Users/sdandy/gba_shum/butano/include/bn_vblank_callback_type.h \
  C:/Users/sdandy/gba_shum/butano/include/bn_core_update_callback_type.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_log.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_config_log.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_log_backend.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_sram.h \
+ C:/Users/sdandy/gba_shum/butano/hw/include/bn_hw_sram_constants.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_common.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_music.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_music_actions.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_music.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_template_actions.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_limits.h \
+ C:/Users/sdandy/gba_shum/games/pong/build/bn_music_items.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_music_item.h \
+ C:/Users/sdandy/gba_shum/games/pong/build/bn_sound_items.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_sound_item.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_sound_handle.h \
  C:/Users/sdandy/gba_shum/butano/include/bn_math.h \
  C:/Users/sdandy/gba_shum/butano/include/bn_sin_lut.h \
  C:/Users/sdandy/gba_shum/butano/include/bn_reciprocal_lut.h \
  C:/Users/sdandy/gba_shum/butano/include/bn_rule_of_three_approximation.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_string.h \
  C:/Users/sdandy/gba_shum/butano/include/bn_keypad.h \
  C:/Users/sdandy/gba_shum/butano/include/bn_display.h \
  C:/Users/sdandy/gba_shum/butano/include/bn_size.h \
  C:/Users/sdandy/gba_shum/butano/hw/include/bn_hw_display_constants.h \
- C:/Users/sdandy/gba_shum/butano/include/bn_common.h \
- C:/Users/sdandy/gba_shum/butano/include/bn_sprite_ptr.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_random.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_math.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_ptr.h \
  C:/Users/sdandy/gba_shum/butano/include/bn_fixed_point.h \
  C:/Users/sdandy/gba_shum/butano/include/bn_point.h \
  C:/Users/sdandy/gba_shum/butano/include/bn_fixed_point_fwd.h \
- C:/Users/sdandy/gba_shum/butano/include/bn_bg_palettes.h \
- C:/Users/sdandy/gba_shum/butano/include/bn_palette_effect_type.h \
  C:/Users/sdandy/gba_shum/butano/include/bn_sprite_text_generator.h \
  C:/Users/sdandy/gba_shum/butano/include/bn_vector.h \
  C:/Users/sdandy/gba_shum/butano/include/bn_vector_fwd.h \
@@ -59,22 +75,29 @@ main.o: C:/Users/sdandy/gba_shum/games/pong/src/main.cpp \
  C:/Users/sdandy/gba_shum/butano/include/bn_utf8_characters_map_ref.h \
  C:/Users/sdandy/gba_shum/butano/include/bn_power_of_two.h \
  C:/Users/sdandy/gba_shum/butano/include/bn_utf8_character.h \
- C:/Users/sdandy/gba_shum/games/pong/include/fixed_32x64_sprite_font.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_sprite_animate_actions.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_sprite_ptr.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_sprite_tiles_ptr.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_sprite_animate_actions_fwd.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_sprite_palette_ptr.h \
+ C:/Users/sdandy/gba_shum/common/include/common_info.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_span.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_vector.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_sprite_ptr.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_string_view.h \
+ C:/Users/sdandy/gba_shum/common/include/common_variable_8x8_sprite_font.h \
  C:/Users/sdandy/gba_shum/butano/include/bn_sprite_font.h \
  C:/Users/sdandy/gba_shum/butano/include/bn_utf8_characters_map.h \
- C:/Users/sdandy/gba_shum/games/pong/build/bn_sprite_items_fixed_32x64_font.h \
- C:/Users/sdandy/gba_shum/butano/include/bn_sprite_item.h \
- C:/Users/sdandy/gba_shum/games/pong/build/bn_sprite_items_variable_8x16_font_red.h \
- C:/Users/sdandy/gba_shum/games/pong/build/bn_sprite_items_variable_8x16_font_blue.h \
- C:/Users/sdandy/gba_shum/games/pong/build/bn_sprite_items_variable_8x16_font_yellow.h \
- C:/Users/sdandy/gba_shum/common/include/common_fixed_8x8_sprite_font.h \
- C:/Users/sdandy/gba_shum/games/pong/build/bn_sprite_items_common_fixed_8x8_font.h \
- C:/Users/sdandy/gba_shum/common/include/common_fixed_8x16_sprite_font.h \
- C:/Users/sdandy/gba_shum/games/pong/build/bn_sprite_items_common_fixed_8x16_font.h \
- C:/Users/sdandy/gba_shum/common/include/common_variable_8x8_sprite_font.h \
  C:/Users/sdandy/gba_shum/games/pong/build/bn_sprite_items_common_variable_8x8_font.h \
- C:/Users/sdandy/gba_shum/common/include/common_variable_8x16_sprite_font.h \
- C:/Users/sdandy/gba_shum/games/pong/build/bn_sprite_items_common_variable_8x16_font.h
+ C:/Users/sdandy/gba_shum/butano/include/bn_sprite_item.h \
+ C:/Users/sdandy/gba_shum/games/pong/build/bn_sprite_items_paddle.h \
+ C:/Users/sdandy/gba_shum/games/pong/build/bn_sprite_items_ball.h \
+ C:/Users/sdandy/gba_shum/games/pong/build/bn_regular_bg_items_bg.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_item.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_bg_palette_item.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_map_item.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_map_cell.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_tiles_item.h
 C:/Users/sdandy/gba_shum/butano/include/bn_core.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_span.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_array.h:
@@ -104,21 +127,37 @@ C:/Users/sdandy/gba_shum/butano/include/bn_memory_alias.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_string_view.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_vblank_callback_type.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_core_update_callback_type.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_log.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_config_log.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_log_backend.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_sram.h:
+C:/Users/sdandy/gba_shum/butano/hw/include/bn_hw_sram_constants.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_common.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_music.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_music_actions.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_music.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_template_actions.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_limits.h:
+C:/Users/sdandy/gba_shum/games/pong/build/bn_music_items.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_music_item.h:
+C:/Users/sdandy/gba_shum/games/pong/build/bn_sound_items.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_sound_item.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_sound_handle.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_math.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_sin_lut.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_reciprocal_lut.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_rule_of_three_approximation.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_string.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_keypad.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_display.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_size.h:
 C:/Users/sdandy/gba_shum/butano/hw/include/bn_hw_display_constants.h:
-C:/Users/sdandy/gba_shum/butano/include/bn_common.h:
-C:/Users/sdandy/gba_shum/butano/include/bn_sprite_ptr.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_random.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_math.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_ptr.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_fixed_point.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_point.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_fixed_point_fwd.h:
-C:/Users/sdandy/gba_shum/butano/include/bn_bg_palettes.h:
-C:/Users/sdandy/gba_shum/butano/include/bn_palette_effect_type.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_sprite_text_generator.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_vector.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_vector_fwd.h:
@@ -135,19 +174,26 @@ C:/Users/sdandy/gba_shum/butano/include/bn_color.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_utf8_characters_map_ref.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_power_of_two.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_utf8_character.h:
-C:/Users/sdandy/gba_shum/games/pong/include/fixed_32x64_sprite_font.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_sprite_animate_actions.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_sprite_ptr.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_sprite_tiles_ptr.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_sprite_animate_actions_fwd.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_sprite_palette_ptr.h:
+C:/Users/sdandy/gba_shum/common/include/common_info.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_span.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_vector.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_sprite_ptr.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_string_view.h:
+C:/Users/sdandy/gba_shum/common/include/common_variable_8x8_sprite_font.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_sprite_font.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_utf8_characters_map.h:
-C:/Users/sdandy/gba_shum/games/pong/build/bn_sprite_items_fixed_32x64_font.h:
-C:/Users/sdandy/gba_shum/butano/include/bn_sprite_item.h:
-C:/Users/sdandy/gba_shum/games/pong/build/bn_sprite_items_variable_8x16_font_red.h:
-C:/Users/sdandy/gba_shum/games/pong/build/bn_sprite_items_variable_8x16_font_blue.h:
-C:/Users/sdandy/gba_shum/games/pong/build/bn_sprite_items_variable_8x16_font_yellow.h:
-C:/Users/sdandy/gba_shum/common/include/common_fixed_8x8_sprite_font.h:
-C:/Users/sdandy/gba_shum/games/pong/build/bn_sprite_items_common_fixed_8x8_font.h:
-C:/Users/sdandy/gba_shum/common/include/common_fixed_8x16_sprite_font.h:
-C:/Users/sdandy/gba_shum/games/pong/build/bn_sprite_items_common_fixed_8x16_font.h:
-C:/Users/sdandy/gba_shum/common/include/common_variable_8x8_sprite_font.h:
 C:/Users/sdandy/gba_shum/games/pong/build/bn_sprite_items_common_variable_8x8_font.h:
-C:/Users/sdandy/gba_shum/common/include/common_variable_8x16_sprite_font.h:
-C:/Users/sdandy/gba_shum/games/pong/build/bn_sprite_items_common_variable_8x16_font.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_sprite_item.h:
+C:/Users/sdandy/gba_shum/games/pong/build/bn_sprite_items_paddle.h:
+C:/Users/sdandy/gba_shum/games/pong/build/bn_sprite_items_ball.h:
+C:/Users/sdandy/gba_shum/games/pong/build/bn_regular_bg_items_bg.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_item.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_bg_palette_item.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_map_item.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_map_cell.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_tiles_item.h:

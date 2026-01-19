@@ -7,7 +7,12 @@
 
 namespace bn::sound_items_info
 {
-    constexpr inline span<const pair<sound_item, string_view>> span;
+    constexpr inline pair<sound_item, string_view> array[] = {
+        make_pair(sound_item(16), string_view("ping")),
+        make_pair(sound_item(17), string_view("pong")),
+    };
+
+    constexpr inline span<const pair<sound_item, string_view>> span(array);
 }
 
 #endif
