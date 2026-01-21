@@ -6,7 +6,7 @@
 */
 
 // Butano libraries
-#include "bn_core.h" // Core libraries.
+#include "bn_core.h" 
 #include "bn_log.h"
 #include "bn_sram.h"
 #include "bn_music.h"
@@ -19,146 +19,50 @@
 #include "bn_keypad.h"
 #include "bn_display.h"
 #include "bn_random.h"
-#include "bn_regular_bg_ptr.h"
+
 #include "bn_sprite_text_generator.h"
 #include "bn_sprite_animate_actions.h"
 #include "bn_sprite_palette_ptr.h"
 #include "common_info.h"
 #include "common_variable_8x8_sprite_font.h"
 
-#include "bn_sprite_items_paddle.h"
-#include "bn_sprite_items_ball.h"
-#include "bn_regular_bg_items_bg.h"
 
 
-struct enemy {
-    int x;
-    int y;
-};
+#include "utils.h"
 
 int main()
 {
     // Initialization
     // Make sure that all initialized Butano data types are placed
     // AFTER this line is called.
-    bn::core::init();
-    
-    // Plays the initial music on startup.
-    // ...
-    // Make sure that the 'music item' matches the name of an .xm or .mod file in /audio!
-    // The '1' represents your volume. Its data type is "bn::fixed".
-    // This means that you can put 'bn::fixed(0.5)' instead of '1'
-    // if you want it to play at half-volume.
-    bn::music_items::amayadori.play(1);
-
-    // Create a background at position 0,0.
-    // We can move it around, but we don't want to for now.
-    // ...
-    // Notice that we're creating a "ptr" (pointer) object, which is
-    // populated with the output of an "item" object's create function.
-    // 'sprite_ptr' != 'sprite_item'
-    bn::regular_bg_ptr bg = bn::regular_bg_items::bg.create_bg(0, 0);
-
-    // This creates the two paddles.
     // The GBA resolution is 240 x 160, which means that, for a 64x64 paddle,
-    // You want their X values to be at about -140 and 140, respectively.
+    bn::core::init();
+    bn::regular_bg_ptr bg = init_bg();
     bn::sprite_ptr left_paddle = bn::sprite_items::paddle.create_sprite(-140, 0);
-    
-    // We're flipping the right paddle, because the sprite is facing to the right.
-    // It's important to save on sprites anywhere we can:
-    // Don't forget: cartridges can only be around 16 MB in size!
-
-
-    // Here are some variables to get us started.
-    int score = 0;               // We'll add a point when you score, and deduct a point when you fail.
-    int bullets_used = 0;
-    int lives = 5;
-    const int max_enemies = 10;
-    const int max_enemies_on_screen = 2;
-    int enemies_on_screen = 0;
-    bool game_over = false;
-    constexpr int min_enemy_y_spacing = 16;
-    // 'Delta' means change.
-    // These two values represent, for each step of the gameloop,
-    // which direction the ball should go. Negative means towards top-left, and positive is bottom-right.
-    // For example,
-    // delta_x = -1, delta_y = 1, would mean that the ball is moving towards the bottom-left side of the screen.
-    // Increasing these numbers will make the ball move faster.
-
-    // In Butano, as in many libraries, you need to initiatize an instance of a RANDOM object
-    // in order to get random numbers. This is what we're doing here.
+    bn::sprite_text_generator text_generator(common::variable_8x8_sprite_font);
+    bn::vector<bn::sprite_ptr, 32> text_sprites;
     bn::random random;
 
-    // We'll want to set up a couple of Butano objects
-    // in order to put text on the screen.
-    bn::sprite_text_generator text_generator(common::variable_8x8_sprite_font);
+    game_state state;
+    bullets bullets = init_bullets();
+    enemies enemies = init_enemies();
 
-    // A 'vector' is a data type that allows us to add or take away elements on a stack,
-    // albeit a stack that can be accessed at any point. It's like an array, but it has
-    // a built-in "size" value so that we can see how many elements are in it.
-    // ..
-    // We need to set up a vector of sprite_ptr to represent individual letters.
-    // We can only have a max of 16 letters in this vector.
-    bn::vector<bn::sprite_ptr, 32> text_sprites; 
-    constexpr int max_bullets = 10;
-    bn::vector<int, max_bullets> bullet_dx;
-    bn::vector<bn::sprite_ptr, max_bullets> bullets;
-    bn::vector<bn::sprite_ptr, max_enemies> enemies;
-    bn::vector<int, max_enemies> enemy_dx;
-    bn::vector<enemy, max_enemies> enemy_positions;
-    for(int i = 0; i < max_bullets; ++i)
-    {
-        bullets.emplace_back(bn::sprite_items::ball.create_sprite(0, 0));
-        bullets.back().set_visible(false);
-        bullet_dx.emplace_back(0);
-    }
-    for(int i = 0; i < max_enemies; ++i)
-    {
-        enemies.emplace_back(bn::sprite_items::ball.create_sprite(0, 0));
-        enemies.back().set_visible(false);
-        enemy_dx.emplace_back(0);
-        enemy_positions.emplace_back(enemy{0, 0});
-    }
     while (true)
     {
-        if (game_over)
+        
+        update_text_sprites(state, text_sprites, text_generator);
+        if (state.game_over)
         {
-            text_sprites.clear();
-            bn::string<32> game_over_text = "Game Over press a to play again";
-            text_generator.generate(-6 * 16,0, game_over_text, text_sprites);
+            display_game_over(text_sprites, text_generator);
             if (bn::keypad::a_pressed())
             {
-                game_over = false;
-                score = 0;
-                bullets_used = 0;
-                lives = 5;
-                enemies_on_screen = 0;
-                for(int i = 0; i < bullets.size(); ++i) 
-                {
-                    bullets[i].set_visible(false);
-                }
-                for(int i = 0; i < enemies.size(); ++i)
-                {
-                    enemies[i].set_visible(false);
-                }
+                reset_game_state(state, bullets, enemies);
             }
-            bn::core::update();
             continue;
         }  
-        text_sprites.clear();
-        bn::string<32> txt_score = "Score: " + bn::to_string<32>(score);
-        bn::string<32> bullet_count_text = "Bullets: " + bn::to_string<32>(max_bullets-bullets_used)+"/" + bn::to_string<32>(max_bullets);
-        bn::string<32> controls_text = "B to Reload";
-        bn::string<32> lives_text = "Lives: " + bn::to_string<32>(lives);
-        text_generator.generate(-6 * 16, 70, controls_text, text_sprites);
-        text_generator.generate(-6 * 16, -68, txt_score, text_sprites);
-        text_generator.generate(30, -68, bullet_count_text, text_sprites);
-        text_generator.generate(30, -56, lives_text, text_sprites);
-        if(lives <=  0){
-            BN_LOG("Game Over");
-            game_over = true;
-            continue;
-        }
+        
+        
+        check_game_over(state);
         if (bn::keypad::up_held() && left_paddle.y() > -48)
         {
             left_paddle.set_y(left_paddle.y() - 3);
@@ -170,53 +74,53 @@ int main()
         }
 
    
-       if(bn::keypad::a_pressed() && bullets_used < max_bullets)
+       if(bn::keypad::a_pressed() && state.bullets_used < max_bullets)
             {
-                BN_LOG(enemies_on_screen);
-                for(int i = 0; i < bullets.size(); ++i)
+                BN_LOG(state.enemies_on_screen);
+                for(int i = 0; i < bullets.sprites.size(); ++i)
                 {
-                    if(!bullets[i].visible())
+                    if(!bullets.sprites[i].visible())
                     {
-                        bullets[i].set_position(left_paddle.x()+30, left_paddle.y());
+                        bullets.sprites[i].set_position(left_paddle.x()+30, left_paddle.y());
                         BN_LOG("paddle position: ", left_paddle.x(), ", ", left_paddle.y());
-                        BN_LOG("bullet position: ", bullets[i].x(), ", ", bullets[i].y());
-                        bullets[i].set_visible(true);
-                        bullet_dx[i] = 3;   // bullet speed
+                        BN_LOG("bullet position: ", bullets.sprites[i].x(), ", ", bullets.sprites[i].y());
+                        bullets.sprites[i].set_visible(true);
+                        bullets.dx[i] = 3;   // bullet speed
                         bn::sound_items::pong.play();
-                        bullets_used++;
-                        BN_LOG(bullets_used);
+                        state.bullets_used++;
+                        BN_LOG(state.bullets_used);
                         break;
                     }
                 }
             }
-        for(int i = 0; i < bullets.size(); ++i)
+        for(int i = 0; i < bullets.sprites.size(); ++i)
         {
-            if(bullets[i].visible())
+            if(bullets.sprites[i].visible())
             {
-                bullets[i].set_x(bullets[i].x() + bullet_dx[i]);
+                bullets.sprites[i].set_x(bullets.sprites[i].x() + bullets.dx[i]);
 
-                if(bullets[i].x() > 140)
+                if(bullets.sprites[i].x() > 140)
                 {
-                    bullets[i].set_visible(false);
+                    bullets.sprites[i].set_visible(false);
                 }
-                for(int j = 0; j < enemies.size(); ++j)
+                for(int j = 0; j < enemies.sprites.size(); ++j)
                 {
-                    if(enemies[j].visible() && bullets[i].x() > enemies[j].x() - 8 && bullets[i].x() < enemies[j].x() + 8 && bullets[i].y() > enemies[j].y() - 8 && bullets[i].y() < enemies[j].y() + 8)
+                    if(enemies.sprites[j].visible() && bullets.sprites[i].x() > enemies.sprites[j].x() - 8 && bullets.sprites[i].x() < enemies.sprites[j].x() + 8 && bullets.sprites[i].y() > enemies.sprites[j].y() - 8 && bullets.sprites[i].y() < enemies.sprites[j].y() + 8)
                     {
-                        enemies[j].set_visible(false);
-                        bullets[i].set_visible(false);
-                        enemies_on_screen--;
-                        score++;
-                        BN_LOG("shot: ", score);
+                        enemies.sprites[j].set_visible(false);
+                        bullets.sprites[i].set_visible(false);
+                        state.enemies_on_screen--;
+                        state.score++;
+                        BN_LOG("shot: ", state.score);
                     }
                 }
             }
         }
             
-        if (enemies_on_screen < max_enemies_on_screen){
-            for(int i = 0; i < enemies.size(); ++i)
+        if (state.enemies_on_screen < max_enemies_on_screen){
+            for(int i = 0; i < enemies.sprites.size(); ++i)
                 {
-                    if(!enemies[i].visible())
+                    if(!enemies.sprites[i].visible())
                     {
                         int rand_y = 0;
                         bool valid = false;
@@ -225,11 +129,11 @@ int main()
                         {
                             rand_y = random.get_int(-48, 49);
                             valid = true;
-                            for(int j = 0; j < enemies.size(); ++j)
+                            for(int j = 0; j < enemies.sprites.size(); ++j)
                             {
-                                if(enemies[j].visible())
+                                if(enemies.sprites[j].visible())
                                 {
-                                    if(bn::abs(rand_y - enemies[j].y()) < min_enemy_y_spacing)
+                                    if(bn::abs(rand_y - enemies.sprites[j].y()) < min_enemy_y_spacing)
                                     {
                                         valid = false;
                                         break;
@@ -238,51 +142,41 @@ int main()
                             }
                         }
 
-                enemies[i].set_position(random.get_int(140, 500), rand_y);
-                enemies[i].set_visible(true);
-                enemy_dx[i] = random.get_int(-2,-1);
-                enemies_on_screen++;
-                BN_LOG(enemies_on_screen);
+                enemies.sprites[i].set_position(random.get_int(140, 500), rand_y);
+                enemies.sprites[i].set_visible(true);
+                enemies.dx[i] = random.get_int(-2,-1);
+                state.enemies_on_screen++;
+                BN_LOG(state.enemies_on_screen);
                 break;
             }
         }
     }
-
-
-
-       for(int i = 0; i < enemies.size(); ++i)
+       for(int i = 0; i < enemies.sprites.size(); ++i)
         {
-            if(enemies[i].visible())
+            if(enemies.sprites[i].visible())
             {
-                enemies[i].set_x(enemies[i].x() + enemy_dx[i]);
-                if(enemies[i].x() < -150)
+                enemies.sprites[i].set_x(enemies.sprites[i].x() + enemies.dx[i]);
+                if(enemies.sprites[i].x() < -150)
                 {
-                    enemies[i].set_visible(false);
-                    enemies_on_screen--;
-                    lives--;
-                    BN_LOG(enemies_on_screen);
+                    enemies.sprites[i].set_visible(false);
+                    state.enemies_on_screen--;
+                    state.lives--;
+                    BN_LOG(state.enemies_on_screen);
                 }
                 
             }
         }
-
-
         if (bn::keypad::b_pressed())
         {
-            BN_LOG(score);
-            bullets_used = 0;
-            for(int i = 0; i < bullets.size(); ++i)
+            BN_LOG(state.score);
+            state.bullets_used = 0;
+            for(int i = 0; i < bullets.sprites.size(); ++i)
             {
-                bullets[i].set_visible(false);
+                bullets.sprites[i].set_visible(false);
             }
         }
     bn::core::update();
-    
-        // Do all the Butano things that we need to have done in the background.
-        // If you don't call this, nothing will happen on the screen or through the speakers.
-        
     }
+
 }
 
-// And now we're done :)
-// Good job!
