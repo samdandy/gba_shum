@@ -56,7 +56,7 @@ main.o: C:/Users/sdandy/gba_shum/games/shum_shooter/src/main.cpp \
  C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_map_cell.h \
  C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_tiles_item.h \
  C:/Users/sdandy/gba_shum/butano/include/bn_tile.h \
- C:/Users/sdandy/gba_shum/games/shum_shooter/build/bn_sprite_items_paddle.h \
+ C:/Users/sdandy/gba_shum/games/shum_shooter/build/bn_sprite_items_zig.h \
  C:/Users/sdandy/gba_shum/butano/include/bn_sprite_item.h \
  C:/Users/sdandy/gba_shum/butano/include/bn_sprite_shape_size.h \
  C:/Users/sdandy/gba_shum/butano/include/bn_sprite_tiles_item.h \
@@ -83,7 +83,8 @@ main.o: C:/Users/sdandy/gba_shum/games/shum_shooter/src/main.cpp \
  C:/Users/sdandy/gba_shum/common/include/common_variable_8x8_sprite_font.h \
  C:/Users/sdandy/gba_shum/butano/include/bn_sprite_font.h \
  C:/Users/sdandy/gba_shum/butano/include/bn_utf8_characters_map.h \
- C:/Users/sdandy/gba_shum/games/shum_shooter/build/bn_sprite_items_common_variable_8x8_font.h
+ C:/Users/sdandy/gba_shum/games/shum_shooter/build/bn_sprite_items_common_variable_8x8_font.h \
+ C:/Users/sdandy/gba_shum/games/shum_shooter/build/bn_sprite_items_paddle.h
 C:/Users/sdandy/gba_shum/games/shum_shooter/include/game.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_core.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_span.h:
@@ -141,7 +142,7 @@ C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_map_item.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_map_cell.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_tiles_item.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_tile.h:
-C:/Users/sdandy/gba_shum/games/shum_shooter/build/bn_sprite_items_paddle.h:
+C:/Users/sdandy/gba_shum/games/shum_shooter/build/bn_sprite_items_zig.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_sprite_item.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_sprite_shape_size.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_sprite_tiles_item.h:
@@ -169,3 +170,4 @@ C:/Users/sdandy/gba_shum/common/include/common_variable_8x8_sprite_font.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_sprite_font.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_utf8_characters_map.h:
 C:/Users/sdandy/gba_shum/games/shum_shooter/build/bn_sprite_items_common_variable_8x8_font.h:
+C:/Users/sdandy/gba_shum/games/shum_shooter/build/bn_sprite_items_paddle.h:

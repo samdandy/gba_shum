@@ -5,6 +5,10 @@
 #include "bn_display.h"
 #include "common_info.h"
 #include "assets.h"
+#include "bn_random.h"
+#include "bn_sprite_items_zig.h"
+#include "bn_sprite_items_ball.h"
+#include "bn_sprite_items_paddle.h"
 
 bullets init_bullets()
 {
@@ -69,21 +73,21 @@ void check_for_reload(game_state& state)
         }
 }
 
-void check_up_input(bn::sprite_ptr& left_paddle){
-    if(bn::keypad::up_held() && left_paddle.y() > -48)
+void check_up_input(bn::sprite_ptr& ziggy){
+    if(bn::keypad::up_held() && ziggy.y() > -48)
         {
-            left_paddle.set_y(left_paddle.y() - 3);
+            ziggy.set_y(ziggy.y() - 3);
         }  
 }
 
-void check_down_input(bn::sprite_ptr& left_paddle){
-    if(bn::keypad::down_held() && left_paddle.y() < 48)
+void check_down_input(bn::sprite_ptr& ziggy){
+    if(bn::keypad::down_held() && ziggy.y() < 48)
     {
-        left_paddle.set_y(left_paddle.y() + 3);
+        ziggy.set_y(ziggy.y() + 3);
     }
 }
 
-void check_for_shooting_bullet(game_state& state, bullets& bullets, bn::sprite_ptr& left_paddle)
+void check_for_shooting_bullet(game_state& state, bullets& bullets, bn::sprite_ptr& ziggy)
 {
     if(bn::keypad::a_pressed() && state.bullets_used < max_bullets)
     {
@@ -91,7 +95,7 @@ void check_for_shooting_bullet(game_state& state, bullets& bullets, bn::sprite_p
         {
             if(!bullets.sprites[i].visible())
             {
-                bullets.sprites[i].set_position(left_paddle.x()+30, left_paddle.y());
+                bullets.sprites[i].set_position(ziggy.x()+15, ziggy.y());
                 bullets.sprites[i].set_visible(true);
                 bullets.dx[i] = 3;   
                 state.bullets_used++;
@@ -101,12 +105,12 @@ void check_for_shooting_bullet(game_state& state, bullets& bullets, bn::sprite_p
     }
 }
 
-void check_player_input(game_state& state, bullets& bullets, bn::sprite_ptr& left_paddle)
+void check_player_input(game_state& state, bullets& bullets, bn::sprite_ptr& ziggy)
 {
-    check_up_input(left_paddle);
-    check_down_input(left_paddle);
+    check_up_input(ziggy);
+    check_down_input(ziggy);
     check_for_reload(state); 
-    check_for_shooting_bullet(state, bullets, left_paddle);
+    check_for_shooting_bullet(state, bullets, ziggy);
 }
 
 
@@ -147,7 +151,7 @@ void spawn_enemies(game_state& state, enemies& enemies, bn::random& random)
     }
 }
 
-void check_enemies(game_state& state, enemies& enemies)
+void check_enemies(game_state& state, enemies& enemies, bn::sprite_ptr& ziggy)
 {
     for(int i = 0; i < enemies.sprites.size(); ++i)
         {
@@ -161,6 +165,13 @@ void check_enemies(game_state& state, enemies& enemies)
                     state.enemies_on_screen--;
                     state.lives--;
                 }
+                if(enemies.sprites[i].x() > ziggy.x() - enemy_hitbox && enemies.sprites[i].x() < ziggy.x() + enemy_hitbox && enemies.sprites[i].y() > ziggy.y() - enemy_hitbox && enemies.sprites[i].y() < ziggy.y() + enemy_hitbox)
+                {
+                    enemies.sprites[i].set_visible(false);
+                    state.enemies_on_screen--;
+                    state.lives--;
+                }
+
             }
         }
 }
@@ -216,7 +227,7 @@ void main_game_loop()
     bn::core::init();
 
     bn::regular_bg_ptr bg = bn::regular_bg_items::bg.create_bg(0, 0);
-    bn::sprite_ptr left_paddle = bn::sprite_items::paddle.create_sprite(-140, 0);
+    bn::sprite_ptr ziggy = bn::sprite_items::zig.create_sprite(-108, 0);
     bn::sprite_text_generator text_generator(common::variable_8x8_sprite_font);
     bn::vector<bn::sprite_ptr, 32> text_sprites;
     bn::random random;
@@ -238,10 +249,10 @@ void main_game_loop()
         } 
         else{
         check_game_over(state);
-        check_player_input(state, bullets, left_paddle);
+        check_player_input(state, bullets, ziggy);
         check_bullets(state, bullets, enemies);
         spawn_enemies(state, enemies, random);
-        check_enemies(state, enemies);
+        check_enemies(state, enemies, ziggy);
         }
     bn::core::update();
     }

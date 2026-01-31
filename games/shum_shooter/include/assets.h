@@ -3,7 +3,7 @@
 #include "bn_vector.h"
 #include "bn_regular_bg_ptr.h"
 #include "bn_regular_bg_items_bg.h"
-#include "bn_sprite_items_paddle.h"
+#include "bn_sprite_items_zig.h"
 #include "bn_sprite_items_ball.h"
 #include "bn_random.h"
 #include "bn_sprite_text_generator.h"
