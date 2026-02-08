@@ -1,4 +1,6 @@
 main.o: C:/Users/sdandy/gba_shum/games/shum_shooter/src/main.cpp \
+ C:/Users/sdandy/gba_shum/games/shum_shooter/include/Application.h \
+ C:/Users/sdandy/gba_shum/games/shum_shooter/include/layer.h \
  C:/Users/sdandy/gba_shum/games/shum_shooter/include/game.h \
  C:/Users/sdandy/gba_shum/butano/include/bn_core.h \
  C:/Users/sdandy/gba_shum/butano/include/bn_span.h \
@@ -85,6 +87,8 @@ main.o: C:/Users/sdandy/gba_shum/games/shum_shooter/src/main.cpp \
  C:/Users/sdandy/gba_shum/butano/include/bn_utf8_characters_map.h \
  C:/Users/sdandy/gba_shum/games/shum_shooter/build/bn_sprite_items_common_variable_8x8_font.h \
  C:/Users/sdandy/gba_shum/games/shum_shooter/build/bn_sprite_items_paddle.h
+C:/Users/sdandy/gba_shum/games/shum_shooter/include/Application.h:
+C:/Users/sdandy/gba_shum/games/shum_shooter/include/layer.h:
 C:/Users/sdandy/gba_shum/games/shum_shooter/include/game.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_core.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_span.h:

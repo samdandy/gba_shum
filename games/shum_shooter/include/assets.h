@@ -24,7 +24,6 @@ struct game_state {
     int lives = max_lives;
     int enemies_on_screen = 0;
     bool game_over = false;
-    
 };
 
 struct bullets {
