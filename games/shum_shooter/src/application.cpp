@@ -1,7 +1,18 @@
 #include "application.h"
+#include <assert.h>
 
 namespace shum
 {
+
+    static Application* s_Application = nullptr;
+    
+    Application::Application()
+        : current_layer(nullptr), is_running(true)
+    {
+        s_Application = this;
+    }
+
+    
     void Application::run()
     {
         while (is_running)
@@ -21,5 +32,9 @@ namespace shum
     void Application::stop()
     {
         is_running = false;
+    }
+    Application& get_app(){
+        assert(s_Application);
+		return *s_Application;
     }
 }

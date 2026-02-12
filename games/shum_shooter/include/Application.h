@@ -6,12 +6,12 @@ namespace shum
     class Application
     {
     public:
-        Application() : current_layer(nullptr), is_running(true) {}
+        Application();
 
         void run();
         void stop();
         void set_layer(Layer* layer);
-
+        static Application& get_app();
     private:
         Layer* current_layer;
         bool is_running;
