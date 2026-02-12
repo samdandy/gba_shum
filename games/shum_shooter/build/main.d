@@ -47,28 +47,24 @@ main.o: C:/Users/sdandy/gba_shum/games/shum_shooter/src/main.cpp \
  C:/Users/sdandy/gba_shum/butano/include/bn_fixed_point_fwd.h \
  C:/Users/sdandy/gba_shum/butano/include/bn_string_view.h \
  C:/Users/sdandy/gba_shum/games/shum_shooter/include/assets.h \
- C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_ptr.h \
- C:/Users/sdandy/gba_shum/games/shum_shooter/build/bn_regular_bg_items_bg.h \
- C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_item.h \
- C:/Users/sdandy/gba_shum/butano/include/bn_bg_palette_item.h \
- C:/Users/sdandy/gba_shum/butano/include/bn_color.h \
- C:/Users/sdandy/gba_shum/butano/include/bn_bpp_mode.h \
- C:/Users/sdandy/gba_shum/butano/include/bn_compression_type.h \
- C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_map_item.h \
- C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_map_cell.h \
- C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_tiles_item.h \
- C:/Users/sdandy/gba_shum/butano/include/bn_tile.h \
- C:/Users/sdandy/gba_shum/games/shum_shooter/build/bn_sprite_items_zig.h \
- C:/Users/sdandy/gba_shum/butano/include/bn_sprite_item.h \
- C:/Users/sdandy/gba_shum/butano/include/bn_sprite_shape_size.h \
- C:/Users/sdandy/gba_shum/butano/include/bn_sprite_tiles_item.h \
- C:/Users/sdandy/gba_shum/butano/include/bn_sprite_palette_item.h \
- C:/Users/sdandy/gba_shum/games/shum_shooter/build/bn_sprite_items_ball.h \
  C:/Users/sdandy/gba_shum/butano/include/bn_random.h \
  C:/Users/sdandy/gba_shum/butano/include/bn_math.h \
  C:/Users/sdandy/gba_shum/butano/include/bn_sin_lut.h \
  C:/Users/sdandy/gba_shum/butano/include/bn_reciprocal_lut.h \
  C:/Users/sdandy/gba_shum/butano/include/bn_rule_of_three_approximation.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_log.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_config_log.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_log_backend.h \
+ C:/Users/sdandy/gba_shum/games/shum_shooter/build/bn_sprite_items_zig.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_sprite_item.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_sprite_shape_size.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_bpp_mode.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_sprite_tiles_item.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_tile.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_compression_type.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_sprite_palette_item.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_color.h \
+ C:/Users/sdandy/gba_shum/games/shum_shooter/build/bn_sprite_items_ball.h \
  C:/Users/sdandy/gba_shum/butano/include/bn_sprite_text_generator.h \
  C:/Users/sdandy/gba_shum/butano/include/bn_vector.h \
  C:/Users/sdandy/gba_shum/butano/include/bn_camera_ptr.h \
@@ -86,7 +82,13 @@ main.o: C:/Users/sdandy/gba_shum/games/shum_shooter/src/main.cpp \
  C:/Users/sdandy/gba_shum/butano/include/bn_sprite_font.h \
  C:/Users/sdandy/gba_shum/butano/include/bn_utf8_characters_map.h \
  C:/Users/sdandy/gba_shum/games/shum_shooter/build/bn_sprite_items_common_variable_8x8_font.h \
- C:/Users/sdandy/gba_shum/games/shum_shooter/build/bn_sprite_items_paddle.h
+ C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_ptr.h \
+ C:/Users/sdandy/gba_shum/games/shum_shooter/build/bn_regular_bg_items_bg.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_item.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_bg_palette_item.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_map_item.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_map_cell.h \
+ C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_tiles_item.h
 C:/Users/sdandy/gba_shum/games/shum_shooter/include/Application.h:
 C:/Users/sdandy/gba_shum/games/shum_shooter/include/layer.h:
 C:/Users/sdandy/gba_shum/games/shum_shooter/include/game.h:
@@ -135,28 +137,24 @@ C:/Users/sdandy/gba_shum/butano/include/bn_point.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_fixed_point_fwd.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_string_view.h:
 C:/Users/sdandy/gba_shum/games/shum_shooter/include/assets.h:
-C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_ptr.h:
-C:/Users/sdandy/gba_shum/games/shum_shooter/build/bn_regular_bg_items_bg.h:
-C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_item.h:
-C:/Users/sdandy/gba_shum/butano/include/bn_bg_palette_item.h:
-C:/Users/sdandy/gba_shum/butano/include/bn_color.h:
-C:/Users/sdandy/gba_shum/butano/include/bn_bpp_mode.h:
-C:/Users/sdandy/gba_shum/butano/include/bn_compression_type.h:
-C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_map_item.h:
-C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_map_cell.h:
-C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_tiles_item.h:
-C:/Users/sdandy/gba_shum/butano/include/bn_tile.h:
-C:/Users/sdandy/gba_shum/games/shum_shooter/build/bn_sprite_items_zig.h:
-C:/Users/sdandy/gba_shum/butano/include/bn_sprite_item.h:
-C:/Users/sdandy/gba_shum/butano/include/bn_sprite_shape_size.h:
-C:/Users/sdandy/gba_shum/butano/include/bn_sprite_tiles_item.h:
-C:/Users/sdandy/gba_shum/butano/include/bn_sprite_palette_item.h:
-C:/Users/sdandy/gba_shum/games/shum_shooter/build/bn_sprite_items_ball.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_random.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_math.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_sin_lut.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_reciprocal_lut.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_rule_of_three_approximation.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_log.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_config_log.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_log_backend.h:
+C:/Users/sdandy/gba_shum/games/shum_shooter/build/bn_sprite_items_zig.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_sprite_item.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_sprite_shape_size.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_bpp_mode.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_sprite_tiles_item.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_tile.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_compression_type.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_sprite_palette_item.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_color.h:
+C:/Users/sdandy/gba_shum/games/shum_shooter/build/bn_sprite_items_ball.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_sprite_text_generator.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_vector.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_camera_ptr.h:
@@ -174,4 +172,10 @@ C:/Users/sdandy/gba_shum/common/include/common_variable_8x8_sprite_font.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_sprite_font.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_utf8_characters_map.h:
 C:/Users/sdandy/gba_shum/games/shum_shooter/build/bn_sprite_items_common_variable_8x8_font.h:
-C:/Users/sdandy/gba_shum/games/shum_shooter/build/bn_sprite_items_paddle.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_ptr.h:
+C:/Users/sdandy/gba_shum/games/shum_shooter/build/bn_regular_bg_items_bg.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_item.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_bg_palette_item.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_map_item.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_map_cell.h:
+C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_tiles_item.h:

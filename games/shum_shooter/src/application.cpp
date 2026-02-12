@@ -1,6 +1,6 @@
 #include "application.h"
 #include <assert.h>
-
+#include "assets.h"
 namespace shum
 {
 
@@ -29,11 +29,15 @@ namespace shum
         current_layer = layer;
     }
 
+    void Application::set_game_layer(){
+        set_layer(&game_layer);  
+    }
+
     void Application::stop()
     {
         is_running = false;
     }
-    Application& get_app(){
+    Application& Application::get_app(){
         assert(s_Application);
 		return *s_Application;
     }

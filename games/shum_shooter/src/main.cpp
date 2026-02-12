@@ -1,16 +1,14 @@
 #include "Application.h"
 #include "layer.h"
 #include "bn_core.h"
-shum::Application app; 
+#include "game.h"
+
 int main()
 {
-    bn::core::init();
-    shum::GameLayer game_layer;
-    shum::MenuLayer menu_layer;
-    
-    app.set_layer(&game_layer);
+    shum::Application app; 
+    bn::core::init(); 
+    app.set_game_layer();
     app.run();
-    
     return 0;
 }
 

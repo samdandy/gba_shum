@@ -1,6 +1,6 @@
 #include "game.h"
 #include "layer.h"
-
+#include "application.h"
 
 bullets init_bullets()
 {
@@ -171,12 +171,13 @@ void check_enemies(game_state& state, enemies& enemies, bn::sprite_ptr& ziggy)
     }
 }
 
-void display_game_over(bn::vector<bn::sprite_ptr, 32>& text_sprites, bn::sprite_text_generator& text_generator)
+void display_game_over(bn::vector<bn::sprite_ptr, 32>& text_sprites, bn::sprite_text_generator& text_generator, game_state& state)
 {
     text_sprites.clear();
     bn::string<32> game_over_text = "Game Over press a to play again";
-    text_generator.generate(-6 * 16, 0, game_over_text, text_sprites);
-    bn::core::update();
+    bn::string<32> score_text = "You Scored " + bn::to_string<32>(state.score) + " Points!";
+    text_generator.generate(-90, -25, game_over_text, text_sprites);
+    text_generator.generate(-60, 0, score_text, text_sprites);
 }
 
 void check_bullets(game_state& state, bullets& bullets, enemies& enemies)
@@ -217,50 +218,60 @@ void check_game_over(game_state& state)
     }
 }
 
+void display_pause(bn::vector<bn::sprite_ptr, 32>& text_sprites, bn::sprite_text_generator& text_generator){
+    text_sprites.clear();
+    bn::string<32> pause_text = "PAUSED - Press START";
+    text_generator.generate(-70, 0, pause_text, text_sprites);
+}
+   
 
-
-void run_game()
+void run_game(game_state& state)
 {
-    
     bn::regular_bg_ptr bg = bn::regular_bg_items::bg.create_bg(0, 0);
     bn::sprite_ptr ziggy = bn::sprite_items::zig.create_sprite(-108, 0);
     bn::sprite_text_generator text_generator(common::variable_8x8_sprite_font);
     bn::vector<bn::sprite_ptr, 32> text_sprites;
     bn::random random;
-   
-    game_state state;
+
     bullets bullets = init_bullets();
     enemies enemies = init_enemies();
+    BN_LOG(state.lives);    
+    bool running = true;
+    bool paused = false;
     
-    while (true)
+    while (running)  
     {
-        update_text_sprites(state, text_sprites, text_generator);
-        if (state.game_over)
+        if(bn::keypad::start_pressed())
         {
-            display_game_over(text_sprites, text_generator);
-            if (bn::keypad::a_pressed())
-            {
-                reset_game_state(state, bullets, enemies);
+            if (!state.game_over){
+            paused = !paused;  
             }
-            continue;
-        } 
+        }
+
+        if(paused)
+        {
+            display_pause(text_sprites, text_generator);
+        }
         else
         {
-            check_game_over(state);
-            check_player_input(state, bullets, ziggy);
-            check_bullets(state, bullets, enemies);
-            spawn_enemies(state, enemies, random);
-            check_enemies(state, enemies, ziggy);
+            update_text_sprites(state, text_sprites, text_generator);
+            if (state.game_over)
+            {
+                display_game_over(text_sprites, text_generator, state);
+                if (bn::keypad::a_pressed())
+                {
+                    reset_game_state(state, bullets, enemies);
+                }
+            } 
+            else
+            {
+                check_game_over(state);
+                check_player_input(state, bullets, ziggy);
+                check_bullets(state, bullets, enemies);
+                spawn_enemies(state, enemies, random);
+                check_enemies(state, enemies, ziggy);
+            }
         }
         bn::core::update();
     }
-}
-
-void pause_game()
-{
-    bn::sprite_text_generator text_generator(common::variable_8x8_sprite_font);
-    bn::vector<bn::sprite_ptr, 32> text_sprites;
-    bn::string<32> pause_text = "Game Paused";
-    text_generator.generate(-6 * 16, 0, pause_text, text_sprites);
-    bn::core::update();
 }

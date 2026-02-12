@@ -1,15 +1,7 @@
 #pragma once
 #include "bn_sprite_ptr.h"
 #include "bn_vector.h"
-#include "bn_regular_bg_ptr.h"
-#include "bn_regular_bg_items_bg.h"
-#include "bn_sprite_items_zig.h"
-#include "bn_sprite_items_ball.h"
 #include "bn_random.h"
-#include "bn_sprite_text_generator.h"
-#include "bn_sprite_animate_actions.h"
-#include "bn_sprite_palette_ptr.h"
-#include "common_variable_8x8_sprite_font.h"
 
 constexpr int max_enemies = 10;
 constexpr int max_enemies_on_screen = 2;

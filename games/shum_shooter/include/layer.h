@@ -1,5 +1,6 @@
 #pragma once
 #include "game.h"
+#include "assets.h"
 
 namespace shum
 {
@@ -13,18 +14,12 @@ namespace shum
     class GameLayer : public Layer
     {
     public:
+        game_state state;
+        ~GameLayer() = default;
         void run_layer() override
         {
-            run_game();  
+            run_game(state);  
         }
     };
-    
-    class MenuLayer : public Layer
-    {
-    public:
-        void run_layer() override
-        {
-            pause_game();  
-        }
-    };
+
 }
