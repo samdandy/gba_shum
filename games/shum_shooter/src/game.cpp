@@ -218,60 +218,100 @@ void check_game_over(game_state& state)
     }
 }
 
-void display_pause(bn::vector<bn::sprite_ptr, 32>& text_sprites, bn::sprite_text_generator& text_generator){
+void display_pause(bn::vector<bn::sprite_ptr, 32>& text_sprites, bn::sprite_text_generator& text_generator, bn::sprite_ptr& ziggy, enemies& enemies_obj, bullets& bullets_obj, game_state& state, bool& paused)
+{
     text_sprites.clear();
     bn::string<32> pause_text = "PAUSED - Press START";
-    text_generator.generate(-70, 0, pause_text, text_sprites);
+    bn::string<32> menu_text = "Press B for Menu";
+    text_generator.generate(-70, -10, pause_text, text_sprites);
+    text_generator.generate(-60, 10, menu_text, text_sprites);
+    if (bn::keypad::b_pressed())
+    {   
+        text_sprites.clear();
+        reset_game_state(state, bullets_obj, enemies_obj);
+        paused = false;
+        ziggy.set_visible(false);
+        shum::Application::get_app().set_menu_layer();
+    }
+}
+
+void show_ziggy_and_bg(bn::sprite_ptr& ziggy, bn::regular_bg_ptr& bg){
+    if (!ziggy.visible()){
+        ziggy.set_visible(true);
+    }
+    if (!bg.visible())
+    {
+        bg.set_visible(true);
+    }
 }
    
-
-void run_game(game_state& state)
+void run_game(
+    game_state& state,
+    bn::regular_bg_ptr& bg,
+    bn::sprite_ptr& ziggy,
+    bn::sprite_text_generator& text_generator,
+    bn::vector<bn::sprite_ptr, 32>& game_text_sprites,
+    bn::random& random,
+    bullets& bullets_obj,
+    enemies& enemies_obj,
+    bool& paused
+)
 {
-    bn::regular_bg_ptr bg = bn::regular_bg_items::bg.create_bg(0, 0);
-    bn::sprite_ptr ziggy = bn::sprite_items::zig.create_sprite(-108, 0);
-    bn::sprite_text_generator text_generator(common::variable_8x8_sprite_font);
-    bn::vector<bn::sprite_ptr, 32> text_sprites;
-    bn::random random;
-
-    bullets bullets = init_bullets();
-    enemies enemies = init_enemies();
-    BN_LOG(state.lives);    
-    bool running = true;
-    bool paused = false;
-    
-    while (running)  
+    if(bn::keypad::start_pressed())
     {
-        if(bn::keypad::start_pressed())
+        if (!state.game_over)
         {
-            if (!state.game_over){
-            paused = !paused;  
-            }
+            paused = !paused;
         }
+    }
 
-        if(paused)
+    if(paused)
+    {
+        display_pause(game_text_sprites, text_generator, ziggy, enemies_obj, bullets_obj, state, paused);
+    }
+    else
+    {
+        show_ziggy_and_bg(ziggy, bg);
+        update_text_sprites(state, game_text_sprites, text_generator);
+        if (state.game_over)
         {
-            display_pause(text_sprites, text_generator);
-        }
+            display_game_over(game_text_sprites, text_generator, state);
+            if (bn::keypad::a_pressed())
+            {
+                reset_game_state(state, bullets_obj, enemies_obj);
+            }
+        } 
         else
         {
-            update_text_sprites(state, text_sprites, text_generator);
-            if (state.game_over)
-            {
-                display_game_over(text_sprites, text_generator, state);
-                if (bn::keypad::a_pressed())
-                {
-                    reset_game_state(state, bullets, enemies);
-                }
-            } 
-            else
-            {
-                check_game_over(state);
-                check_player_input(state, bullets, ziggy);
-                check_bullets(state, bullets, enemies);
-                spawn_enemies(state, enemies, random);
-                check_enemies(state, enemies, ziggy);
-            }
+            check_game_over(state);
+            check_player_input(state, bullets_obj, ziggy);
+            check_bullets(state, bullets_obj, enemies_obj);
+            spawn_enemies(state, enemies_obj, random);
+            check_enemies(state, enemies_obj, ziggy);
         }
-        bn::core::update();
+    }
+}
+
+void run_menu(
+    bn::regular_bg_ptr& bg,
+    bn::sprite_text_generator& text_generator,
+    bn::vector<bn::sprite_ptr, 32>& menu_text_sprites
+)
+{
+    // Only generate text if sprites are empty (first frame)
+    if (menu_text_sprites.empty())
+    {   
+        bg.set_visible(true);
+        bn::string<32> title_text = "ZIGGY SHOOTER";
+        bn::string<32> start_text = "Press A to Start";
+        BN_LOG("Generating menu text sprites");
+        text_generator.generate(-40, -10, title_text, menu_text_sprites);
+        text_generator.generate(-50, 10, start_text, menu_text_sprites);
+    }
+
+    if (bn::keypad::a_pressed())
+    {
+        menu_text_sprites.clear();
+        shum::Application::get_app().set_game_layer();
     }
 }
