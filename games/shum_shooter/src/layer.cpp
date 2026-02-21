@@ -24,14 +24,13 @@ namespace shum
     }
 
     MenuLayer::MenuLayer() 
-        : bg(bn::regular_bg_items::bg.create_bg(0, 0)),
-        text_generator(common::variable_8x8_sprite_font)
+        : title_bg(bn::regular_bg_items::title_bg.create_bg(0, 0))
     {
     }
 
     void MenuLayer::update()
     {
-        run_menu(bg, text_generator, menu_text_sprites);
+        run_menu(title_bg);
     }
 
 }

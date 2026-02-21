@@ -34,8 +34,6 @@ namespace shum
         MenuLayer();
         void update() override;
     private:
-        bn::regular_bg_ptr bg;
-        bn::sprite_text_generator text_generator;
-        bn::vector<bn::sprite_ptr, 32> menu_text_sprites;
+        bn::regular_bg_ptr title_bg;
     };
 }

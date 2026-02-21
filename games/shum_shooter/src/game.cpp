@@ -218,7 +218,7 @@ void check_game_over(game_state& state)
     }
 }
 
-void display_pause(bn::vector<bn::sprite_ptr, 32>& text_sprites, bn::sprite_text_generator& text_generator, bn::sprite_ptr& ziggy, enemies& enemies_obj, bullets& bullets_obj, game_state& state, bool& paused)
+void display_pause(bn::regular_bg_ptr& bg, bn::vector<bn::sprite_ptr, 32>& text_sprites, bn::sprite_text_generator& text_generator, bn::sprite_ptr& ziggy, enemies& enemies_obj, bullets& bullets_obj, game_state& state, bool& paused)
 {
     text_sprites.clear();
     bn::string<32> pause_text = "PAUSED - Press START";
@@ -231,6 +231,7 @@ void display_pause(bn::vector<bn::sprite_ptr, 32>& text_sprites, bn::sprite_text
         reset_game_state(state, bullets_obj, enemies_obj);
         paused = false;
         ziggy.set_visible(false);
+        bg.set_visible(false);
         shum::Application::get_app().set_menu_layer();
     }
 }
@@ -267,7 +268,7 @@ void run_game(
 
     if(paused)
     {
-        display_pause(game_text_sprites, text_generator, ziggy, enemies_obj, bullets_obj, state, paused);
+        display_pause(bg, game_text_sprites, text_generator, ziggy, enemies_obj, bullets_obj, state, paused);
     }
     else
     {
@@ -293,25 +294,13 @@ void run_game(
 }
 
 void run_menu(
-    bn::regular_bg_ptr& bg,
-    bn::sprite_text_generator& text_generator,
-    bn::vector<bn::sprite_ptr, 32>& menu_text_sprites
+    bn::regular_bg_ptr& title_bg
 )
-{
-    // Only generate text if sprites are empty (first frame)
-    if (menu_text_sprites.empty())
-    {   
-        bg.set_visible(true);
-        bn::string<32> title_text = "ZIGGY SHOOTER";
-        bn::string<32> start_text = "Press A to Start";
-        BN_LOG("Generating menu text sprites");
-        text_generator.generate(-40, -10, title_text, menu_text_sprites);
-        text_generator.generate(-50, 10, start_text, menu_text_sprites);
-    }
-
-    if (bn::keypad::a_pressed())
+{ 
+    title_bg.set_visible(true);
+    if (bn::keypad::start_pressed())
     {
-        menu_text_sprites.clear();
         shum::Application::get_app().set_game_layer();
+        title_bg.set_visible(false);
     }
 }

@@ -88,7 +88,8 @@ main.o: C:/Users/sdandy/gba_shum/games/shum_shooter/src/main.cpp \
  C:/Users/sdandy/gba_shum/butano/include/bn_bg_palette_item.h \
  C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_map_item.h \
  C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_map_cell.h \
- C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_tiles_item.h
+ C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_tiles_item.h \
+ C:/Users/sdandy/gba_shum/games/shum_shooter/build/bn_regular_bg_items_title_bg.h
 C:/Users/sdandy/gba_shum/games/shum_shooter/include/Application.h:
 C:/Users/sdandy/gba_shum/games/shum_shooter/include/layer.h:
 C:/Users/sdandy/gba_shum/games/shum_shooter/include/game.h:
@@ -179,3 +180,4 @@ C:/Users/sdandy/gba_shum/butano/include/bn_bg_palette_item.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_map_item.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_map_cell.h:
 C:/Users/sdandy/gba_shum/butano/include/bn_regular_bg_tiles_item.h:
+C:/Users/sdandy/gba_shum/games/shum_shooter/build/bn_regular_bg_items_title_bg.h:
